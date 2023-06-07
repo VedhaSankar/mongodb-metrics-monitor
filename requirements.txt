@@ -1,0 +1,9 @@
+pymongo
+python-dotenv
+dnspython
+SQLAlchemy
+Werkzeug
+gunicorn
+Jinja2
+flask
+Flask
