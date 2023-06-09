@@ -7,3 +7,4 @@ gunicorn
 Jinja2
 flask
 Flask
+prometheus-client

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-exporter
+spec:
+  selector:
+    matchLabels:
+      app: mongodb-exporter
+  template:
+    metadata:
+      labels:
+        app: mongodb-exporter
+    spec:
+      containers:
+        - name: mongodb-exporter
+          image: mongo-exporter:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 5003
+          imagePullPolicy: IfNotPresent
+
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  key: MONGO_URI
+                  name: mysecret
